@@ -7,11 +7,11 @@ Author: intrsno
 */
 
 function image_switcher_block_init() {
-    wp_register_script(
+    wp_register_script( 
         'image-switcher-block-editor',
         plugins_url('block-editor.js', __FILE__),
-        array('wp-blocks', 'wp-element', 'wp-editor')
-    );
+        array('wp-blocks', 'wp-element', 'wp-block-editor')
+    );    
 
     wp_register_style(
         'image-switcher-block-editor',

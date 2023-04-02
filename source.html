@@ -1,0 +1,81 @@
+// Это источник, который лег в основу плагина
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный блок</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 730px;
+            margin: 0 auto;
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%;
+            overflow: hidden;
+        }
+        .image-container img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-container .back {
+            transform: translateY(100%);
+            transition: transform 1s;
+        }
+        .close-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 5px 10px;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img class="front" src="https://kartinkin.net/uploads/posts/2022-02/1645500505_37-kartinkin-net-p-kvadratnie-kartinki-38.png" alt="Image 1">
+            <img class="back" src="https://kartinkin.net/uploads/posts/2022-02/1645500461_20-kartinkin-net-p-kvadratnie-kartinki-20.png" alt="Image 2">
+        </div>
+        <button class="close-btn">Закрыть</button>
+    </div>
+
+    <script>
+        const backImage = document.querySelector('.back');
+        const closeBtn = document.querySelector('.close-btn');
+
+        function startAnimation() {
+            setTimeout(() => {
+                backImage.style.transform = 'translateY(0)';
+                closeBtn.style.display = 'block';
+            }, 2000);
+        }
+
+        closeBtn.addEventListener('click', () => {
+            backImage.style.transform = 'translateY(100%)';
+            closeBtn.style.display = 'none';
+            setTimeout(startAnimation, 5000);
+        });
+
+        startAnimation();
+    </script>
+</body>
+</html>
